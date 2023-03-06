@@ -36,3 +36,30 @@ function myFunction() {
 console.log(carName);
 
 */
+
+// Closure
+
+function x() {
+    let a = 10;
+    function y() {
+        var b = 20;
+        function z() {
+            let c = 30;
+            console.log(a, b, c);
+        }
+        b = 200;
+        z();
+        
+    }
+    y();
+}
+x();
+
+
+
+
+
+
+
+
+
