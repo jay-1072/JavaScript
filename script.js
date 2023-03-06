@@ -82,6 +82,24 @@ function myFunction(value) {
 // const points = new Array(40);  //Create an array with 40 undefined elements:
 
 
+// Function
+
+console.log(multiply(4, 3)); // Uncaught ReferenceError: Cannot access 'x' before initialization
+
+function multiply (a, b) {return a*b};
+
+const add = (function() {
+    let counter = 0;
+    return function() {
+        counter += 1;
+        return counter;
+    }
+})();
+
+function myFun() {
+    document.getElementById("demo").innerHTML = add();
+}
+
 
 
 
