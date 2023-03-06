@@ -16,3 +16,23 @@
 const PI = 3.14 // fine
 // PI = 3.145 Uncaught TypeError: Assignment to constant variable.
 
+
+// Scope
+
+// If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+
+// This code example will declare a global variable , even if the value is assigned inside a function.carName
+
+/*
+
+myFunction();
+
+// code here can use carName
+
+function myFunction() {
+  carName = "Volvo";
+}
+
+console.log(carName);
+
+*/
