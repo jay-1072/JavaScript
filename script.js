@@ -122,6 +122,56 @@ for(let i in obj.cars) {
 
 document.getElementById("demo").innerHTML = x;
 
+// Iterable
+
+myItr = {};
+
+myItr[Symbol.iterator] = function() {
+    let a = 0;
+    done = false;
+    return {
+        next() {
+            a += 10;
+            if(a==100) {done=true;}
+            return {value: a, done:done};
+        }
+    };
+}
+
+let iterat = myItr[Symbol.iterator](); 
+
+let txt = "";
+while(true) {
+    const result = iterat.next();
+    if(result.done) break;
+    txt += result.value + '<br>';
+}
+
+document.getElementById("demo2").innerHTML = txt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
