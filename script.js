@@ -100,6 +100,27 @@ function myFun() {
     document.getElementById("demo").innerHTML = add();
 }
 
+// Object
+
+const obj = {
+    fName:"Jay",
+    lName:"Koshti",
+    cars: [
+        {name:"Ford", models:['Focus', 'Mustang', 'Fiesta']},
+        {name:"BMW", models:["320", "X3", "X5"]}
+    ]
+}
+
+let x = "";
+
+for(let i in obj.cars) {
+    x += "<h1>" + obj.cars[i].name  + "</h1>"
+    for(let j in obj.cars[i].models) {
+        x += obj.cars[i].models[j] + "<br>";
+    }
+}
+
+document.getElementById("demo").innerHTML = x;
 
 
 
