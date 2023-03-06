@@ -39,23 +39,47 @@ console.log(carName);
 
 // Closure
 
-function x() {
-    let a = 10;
-    function y() {
-        var b = 20;
-        function z() {
-            let c = 30;
-            console.log(a, b, c);
-        }
-        b = 200;
-        z();
+// function x() {
+//     let a = 10;
+//     function y() {
+//         var b = 20;
+//         function z() {
+//             let c = 30;
+//             console.log(a, b, c);
+//         }
+//         b = 200;
+//         z();
         
-    }
-    y();
+//     }
+//     y();
+// }
+// x();
+
+// Array
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Carrot");
+
+let text = "<ul>";
+fruits.forEach(myFunction);
+text += "</ul>";
+
+document.getElementById("demo").innerHTML = text;
+
+function myFunction(value) {
+  text += "<li>" + value + "</li>";
 }
-x();
 
+// Arrays with named indexes are called associative arrays (or hashes).
+// JavaScript does not support arrays with named indexes
 
+// Array vs Object
+
+// In JavaScript, arrays use numbered indexes.  
+// In JavaScript, objects use named indexes.
+ 
+// const points = [40]; // Create an array with one element:
+// is not the same as:
+// const points = new Array(40);  //Create an array with 40 undefined elements:
 
 
 
