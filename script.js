@@ -247,25 +247,49 @@ let object6 = JSON.parse(text5);
 document.getElementById("stingify3").innerHTML = object6.name;
 
 // Fetching data from data.php
-const xmlhttp = new XMLHttpRequest();
+// const xmlhttp = new XMLHttpRequest();
 
-xmlhttp.onload = function() {
-  const myObj = JSON.parse(this.responseText);
-  document.getElementById("jPhp1").innerHTML = myObj.name;
-}
-xmlhttp.open("GET", "data.php");
-xmlhttp.send();
-
-
+// xmlhttp.onload = function() {
+//   const myObj = JSON.parse(this.responseText);
+//   document.getElementById("jPhp1").innerHTML = myObj.name;
+// }
+// xmlhttp.open("GET", "data.php");
+// xmlhttp.send();
 
 
+/* HTML DOM manipulation */
 
 
+// const div = document.createElement('div')
+
+// div.innerText = "Hello World";   // will apply style
+// div.textContent = "New Hello World"; // will not apply style
+
+// div.innerHTML  = "<i>I am italic</i>" // for rendering html inside string
+// alternative
+// const i = document.createElement('i');
+// i.innerText = "I am italic too"
+// body.append(i);
+
+// body.append(div);
+const body = document.body;
+const div = document.querySelector("div");
+const spanHi = document.querySelector("#hi");
+const spanBye = document.querySelector("#bye");
+
+// spanHi.remove();  //easy
+
+//alternative
+div.removeChild(spanBye)
 
 
+console.log(spanHi.getAttribute('id'));
+console.log(spanHi.getAttribute('title'));
+//alternarive
+console.log(spanHi.id); //easy
 
-
-
+console.log(spanHi.dataset)
+console.log(spanHi.dataset.test)
 
 
 
