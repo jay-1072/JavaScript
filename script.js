@@ -291,6 +291,14 @@ console.log(spanHi.id); //easy
 console.log(spanHi.dataset)
 console.log(spanHi.dataset.test)
 
+/* Event listeners */
 
+const button = document.querySelector('.btn');
+button.addEventListener('click', function(event) {
+    console.log(event.target);
+}, {capture: true});
 
+document.addEventListener('click', e=> {
+    console.log("document");
+})
 
