@@ -49,7 +49,7 @@ console.log(carName);
 //         }
 //         b = 200;
 //         z();
-        
+
 //     }
 //     y();
 // }
@@ -66,7 +66,7 @@ text += "</ul>";
 document.getElementById("demo").innerHTML = text;
 
 function myFunction(value) {
-  text += "<li>" + value + "</li>";
+    text += "<li>" + value + "</li>";
 }
 
 // Arrays with named indexes are called associative arrays (or hashes).
@@ -76,7 +76,7 @@ function myFunction(value) {
 
 // In JavaScript, arrays use numbered indexes.  
 // In JavaScript, objects use named indexes.
- 
+
 // const points = [40]; // Create an array with one element:
 // is not the same as:
 // const points = new Array(40);  //Create an array with 40 undefined elements:
@@ -86,11 +86,11 @@ function myFunction(value) {
 
 console.log(multiply(4, 3)); // Uncaught ReferenceError: Cannot access 'x' before initialization
 
-function multiply (a, b) {return a*b};
+function multiply(a, b) { return a * b };
 
-const add = (function() {
+const add = (function () {
     let counter = 0;
-    return function() {
+    return function () {
         counter += 1;
         return counter;
     }
@@ -103,19 +103,19 @@ function myFun() {
 // Object
 
 const obj = {
-    fName:"Jay",
-    lName:"Koshti",
+    fName: "Jay",
+    lName: "Koshti",
     cars: [
-        {name:"Ford", models:['Focus', 'Mustang', 'Fiesta']},
-        {name:"BMW", models:["320", "X3", "X5"]}
+        { name: "Ford", models: ['Focus', 'Mustang', 'Fiesta'] },
+        { name: "BMW", models: ["320", "X3", "X5"] }
     ]
 }
 
 let x = "";
 
-for(let i in obj.cars) {
-    x += "<h1>" + obj.cars[i].name  + "</h1>"
-    for(let j in obj.cars[i].models) {
+for (let i in obj.cars) {
+    x += "<h1>" + obj.cars[i].name + "</h1>"
+    for (let j in obj.cars[i].models) {
         x += obj.cars[i].models[j] + "<br>";
     }
 }
@@ -126,28 +126,63 @@ document.getElementById("demo").innerHTML = x;
 
 myItr = {};
 
-myItr[Symbol.iterator] = function() {
+myItr[Symbol.iterator] = function () {
     let a = 0;
     done = false;
     return {
         next() {
             a += 10;
-            if(a==100) {done=true;}
-            return {value: a, done:done};
+            if (a == 100) { done = true; }
+            return { value: a, done: done };
         }
     };
 }
 
-let iterat = myItr[Symbol.iterator](); 
+let iterat = myItr[Symbol.iterator]();
 
 let txt = "";
-while(true) {
+while (true) {
     const result = iterat.next();
-    if(result.done) break;
+    if (result.done) break;
     txt += result.value + '<br>';
 }
 
 document.getElementById("demo2").innerHTML = txt;
+
+// call back
+function myDisplayer(some) {
+    document.getElementById("demo3").innerHTML = "<h2> res = " + some + "</h2>";
+}
+
+function myCalculator(num1, num2, myCallback) {
+    let sum = num1 + num2;
+    myCallback(sum);
+}
+
+myCalculator(5, 5, myDisplayer);
+
+// Promises
+
+function Display(some) {
+    document.getElementById("demo4").innerHTML = some;
+}
+
+let myPromise = new Promise(function (myResolve, myReject) {
+    let x = 0;
+
+    // The producing code (this may take some time)
+
+    if (x == 0) {
+        myResolve("OK");
+    } else {
+        myReject("Error");
+    }
+});
+
+myPromise.then(
+    function (value) { Display(value); },
+    function (error) { Display(error); }
+);
 
 
 
