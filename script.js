@@ -184,18 +184,77 @@ myPromise.then(
     function (error) { Display(error); }
 );
 
+// JSON
+
+const text1 = '{"name":"John", "age":30, "city":"New York"}'
+const object1 = JSON.parse(text1);
+document.getElementById("json1").innerHTML = object1.name + ", " + object1.age;
+
+// When using the JSON.parse() on a JSON derived from an array, 
+// the method will return a JavaScript array, instead of a JavaScript object.
+const text2 = '[ "Ford", "BMW", "Audi", "Fiat" ]';
+const myArr = JSON.parse(text2);
+document.getElementById("json2").innerHTML = myArr[0];
 
 
+/* Exception */
 
+// 1. parsing dates 
+const text3 = '{"name":"John", "birth":"1986-12-14", "city":"New York"}';
+const object3 = JSON.parse(text3);
+object3.birth = new Date(object3.birth);
+document.getElementById("json3").innerHTML = object3.name + ", " + object3.birth;
 
+// another way
 
+const object3_1 = JSON.parse(text3, function(key, value) {
+    if(key=="birth") {
+        return new Date(value);
+    }
+    else {
+        return value;
+    }
+});
+document.getElementById("json3_1").innerHTML = object3_1.name + ", " + object3_1.birth;
 
+// 2. parsing function
 
+const text4 = '{"name":"John", "age":"function() {return 30;}", "city":"New York"}';
+const object4 = JSON.parse(text4);
+object4.age = eval("(" + object4.age + ")");
+document.getElementById("json3_1").innerHTML = object4.name + ", " + object4.age(); 
 
+// JSON.stringify()
+const object5 = {name: "John", age: 30, city: "New York"};
+const myJSON = JSON.stringify(object5);
+document.getElementById("stingify1").innerHTML = myJSON;
 
+// using array
+const arr = ["John", "Peter", "Sally", "Jane"];
+const myJSON1 = JSON.stringify(arr);
+document.getElementById("stingify2").innerHTML = myJSON1;
 
+// using local storage
 
+// Storing data:
+const myObj = { name: "John", age: 31, city: "New York" };
+const myJSON2 = JSON.stringify(myObj);
+localStorage.setItem("testJSON", myJSON2);
 
+// Retrieving data:
+let text5 = localStorage.getItem("testJSON");
+let object6 = JSON.parse(text5);
+document.getElementById("stingify3").innerHTML = object6.name;
+
+// Fetching data from data.php
+const xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  document.getElementById("jPhp1").innerHTML = myObj.name;
+}
+xmlhttp.open("GET", "data.php");
+xmlhttp.send();
 
 
 
